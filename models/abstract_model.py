@@ -22,16 +22,18 @@ class AbstractModel(object):
         """
         self.control = control
         self.variant = variant
-        self.n_control = self.control.shape[0]
-        self.n_variant = self.variant.shape[0]
+        self.n_samples = None
         self.params = []
         self.stochastics = {}
 
-    def setup(self):
+    def setup(self, n_samples):
         """Define models for each group, set parameters prior distributions and create PyMC Model object.
+
+        :param int n_samples: number of MCMC samples
 
         :return: None
         """
+        self.n_samples = n_samples
         self.set_priors()
         self.set_models()
 
@@ -126,8 +128,7 @@ class AbstractModel(object):
             ax.hist(obs, bins=bins, rwidth=0.5, facecolor='r', edgecolor='none', normed=True)
 
             # Sample of model predictions
-            n_samps = getattr(self, 'n_' + group)
-            idxs = [int(val) for val in np.round(np.random.uniform(size=n_curves) * n_samps)]
+            idxs = [int(val) for val in np.round(np.random.uniform(size=n_curves) * self.n_samples)]
             x = np.linspace(bins[0], bins[-1], 100)
             for i in idxs:
                 ax.plot(x, self.draw_distribution(group, x, i), color=PRETTY_BLUE, zorder=-10)

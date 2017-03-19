@@ -44,7 +44,7 @@ class BayesianTest:
 
         :return: None
         """
-        self.model.setup()
+        self.model.setup((n_iter - n_burn) / thin)
         self.sampler = MCMC(self.model.stochastics)
         self.sampler.sample(iter=n_iter, burn=n_burn, thin=thin, progress_bar=self.verbose)
 
