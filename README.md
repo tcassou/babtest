@@ -15,8 +15,9 @@ pip install -r requirements.txt
 ## Distributions currently available
 * [Bernoulli distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution)
 * [Exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution)
-* [Normal distribution](https://en.wikipedia.org/wiki/Normal_distribution)
 * [Lognormal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution)
+* [Normal distribution](https://en.wikipedia.org/wiki/Normal_distribution)
+* [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution)
 * [Student's t-distribution](https://en.wikipedia.org/wiki/Student's_t-distribution)
 
 ## Example
