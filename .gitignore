@@ -1,0 +1,7 @@
+# Folder patterns
+.venv
+.ipynb_checkpoints
+
+# File patterns
+*.pyc
+*.DS_Store
