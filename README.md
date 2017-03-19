@@ -5,8 +5,8 @@ Bayesian Tests are a Bayesian alternative to classical hypothesis testing, you c
 ## Setup
 Preferably use a virtual environment:
 ```
-git clone git@github.com:tcassou/b-test
-cd b-test
+git clone git@github.com:tcassou/btest
+cd btest
 virtualenv env
 . env/bin/activate
 pip install -r requirements.txt
@@ -43,14 +43,14 @@ This will typically produce the following plots:
 
 ### Data and model
 
-![Data vs Model](https://github.com/tcassou/b-test/blob/master/example/data_vs_pred.png)
+![Data vs Model](https://github.com/tcassou/btest/blob/master/example/data_vs_pred.png)
 The metric distribution is shown for both `control` and `variant` sets (red bars), as well as a few plots of distributions estimated in the Monte Carlo sampling (blue lines).
 
 In our example, one can eyeball that the model is a good fit for the data.
 
 ### Posterior knowledge of distribution parameters
 
-![Posterior Parameters](https://github.com/tcassou/b-test/blob/master/example/posterior_distrib.png)
+![Posterior Parameters](https://github.com/tcassou/btest/blob/master/example/posterior_distrib.png)
 For each of the sets (`control`, `variant`), distribution parameters are estimated. This "knowledge" of parameters is described as a likelihood, or in other words denstity of credibility, which is represented in the above graphs.
 In our example, it can be seen that the parameters of the two sets are extremely likely to be different, as their distributions are shifted and
 * barely overlap in case of the mean,
