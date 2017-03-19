@@ -7,8 +7,8 @@ Preferably use a virtual environment:
 ```
 git clone git@github.com:tcassou/btest
 cd btest
-virtualenv env
-. env/bin/activate
+virtualenv .venv
+. .venv/bin/activate
 pip install -r requirements.txt
 ```
 
