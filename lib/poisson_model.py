@@ -2,14 +2,13 @@
 from __future__ import division
 
 import numpy as np
-from pymc import Exponential
-from pymc import Uniform
-from pymc.distributions import exponential_like
-
 from models.abstract_model import AbstractModel
+from pymc import Poisson
+from pymc import Uniform
+from pymc.distributions import poisson_like
 
 
-class ExponentialModel(AbstractModel):
+class PoissonModel(AbstractModel):
 
     def __init__(self, control, variant):
         """Init.
@@ -19,7 +18,7 @@ class ExponentialModel(AbstractModel):
 
         """
         AbstractModel.__init__(self, control, variant)
-        self.params = ['lambda']
+        self.params = ['mu']
 
     def set_models(self):
         """Define models for each group.
@@ -27,9 +26,9 @@ class ExponentialModel(AbstractModel):
         :return: None
         """
         for group in ['control', 'variant']:
-            self.stochastics[group] = Exponential(
+            self.stochastics[group] = Poisson(
                 group,
-                self.stochastics[group + '_lambda'],
+                self.stochastics[group + '_mu'],
                 value=getattr(self, group),
                 observed=True)
 
@@ -43,7 +42,7 @@ class ExponentialModel(AbstractModel):
         obs = np.concatenate((self.control, self.variant))
         obs_mean = np.mean(obs)
         for group in ['control', 'variant']:
-            self.stochastics[group + '_lambda'] = Uniform(group + '_lambda', 0, 100 / obs_mean)
+            self.stochastics[group + '_mu'] = Uniform(group + '_mu', 0, 100 * obs_mean)
 
     def draw_distribution(self, group, x, i):
         """Draw the ith sample distribution from the model, and compute its values for each element of x.
@@ -55,5 +54,5 @@ class ExponentialModel(AbstractModel):
         :return: values of the model for the ith distribution
         :rtype: numpy.array
         """
-        lam = self.stochastics[group + '_lambda'].trace()[i]
-        return np.exp([exponential_like(xi, lam) for xi in x])
+        mu = self.stochastics[group + '_mu'].trace()[i]
+        return np.exp([poisson_like(xi, mu) for xi in x])

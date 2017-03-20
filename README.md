@@ -1,5 +1,7 @@
 # Python Bayesian Tests
 
+[![Build Status](https://travis-ci.org/tcassou/btest.svg?branch=master)](https://travis-ci.org/tcassou/btest)
+
 Bayesian Tests are a Bayesian alternative to classical hypothesis testing, you can read more about it [here](https://en.wikipedia.org/wiki/Bayes_factor).
 
 ## Setup
@@ -32,10 +34,10 @@ array([ 0.0986842, -0.0176   ,  0.0571429, ...,  0.452941 , -0.304348 ,
         0.289474 ])
 ```
 
-You simply need to create a `BayesianTest` object, specifying the data sets and the model you want to use. All available models can be found in `bayesian_test.py`.
+You simply need to create a `BTest` object, specifying the data sets and the model you want to use. All available models can be found in `btest.py`.
 Here we'll assume the Student's t-distribution is a good description of our metric.
 ```
-bt = BayesianTest(control, variant, model='student')
+bt = BTest(control, variant, model='student')
 bt.run()
 bt.plot()
 ```

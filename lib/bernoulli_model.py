@@ -2,15 +2,13 @@
 from __future__ import division
 
 import numpy as np
-from pymc import Lognormal
-from pymc import Normal
-from pymc import Uniform
-from pymc.distributions import lognormal_like
-
 from models.abstract_model import AbstractModel
+from pymc import Bernoulli
+from pymc import Uniform
+from pymc.distributions import bernoulli_like
 
 
-class LognormalModel(AbstractModel):
+class BernoulliModel(AbstractModel):
 
     def __init__(self, control, variant):
         """Init.
@@ -20,7 +18,7 @@ class LognormalModel(AbstractModel):
 
         """
         AbstractModel.__init__(self, control, variant)
-        self.params = ['location', 'scale']
+        self.params = ['p']
 
     def set_models(self):
         """Define models for each group.
@@ -28,10 +26,9 @@ class LognormalModel(AbstractModel):
         :return: None
         """
         for group in ['control', 'variant']:
-            self.stochastics[group] = Lognormal(
+            self.stochastics[group] = Bernoulli(
                 group,
-                self.stochastics[group + '_location'],
-                self.stochastics[group + '_scale'],
+                self.stochastics[group + '_p'],
                 value=getattr(self, group),
                 observed=True)
 
@@ -42,13 +39,8 @@ class LognormalModel(AbstractModel):
 
         :return: None
         """
-        obs = np.concatenate((self.control, self.variant))
-        mean, sigma, med = np.mean(obs), np.std(obs), np.median(obs)
-        location = np.log(med)
-        scale = np.sqrt(2 * np.log(mean / med))
         for group in ['control', 'variant']:
-            self.stochastics[group + '_location'] = Normal(group + '_location', location, 0.000001 / sigma ** 2)
-            self.stochastics[group + '_scale'] = Uniform(group + '_scale', scale / 1000, scale * 1000)
+            self.stochastics[group + '_p'] = Uniform(group + '_p', 0, 1)
 
     def draw_distribution(self, group, x, i):
         """Draw the ith sample distribution from the model, and compute its values for each element of x.
@@ -60,6 +52,5 @@ class LognormalModel(AbstractModel):
         :return: values of the model for the ith distribution
         :rtype: numpy.array
         """
-        loc = self.stochastics[group + '_location'].trace()[i]
-        scale = self.stochastics[group + '_scale'].trace()[i]
-        return np.exp([lognormal_like(xi, loc, scale) for xi in x])
+        p = self.stochastics[group + '_p'].trace()[i]
+        return np.exp([bernoulli_like(xi, p) for xi in x])

@@ -3,14 +3,16 @@ from __future__ import division
 
 import matplotlib.pyplot as plt
 import numpy as np
+from models.abstract_model import AbstractModel
+from pymc import deterministic
+from pymc import Exponential
+from pymc import NoncentralT
 from pymc import Normal
 from pymc import Uniform
-from pymc.distributions import normal_like
-
-from models.abstract_model import AbstractModel
+from pymc.distributions import noncentral_t_like
 
 
-class GaussianModel(AbstractModel):
+class StudentModel(AbstractModel):
 
     def __init__(self, control, variant):
         """Init.
@@ -20,18 +22,31 @@ class GaussianModel(AbstractModel):
 
         """
         AbstractModel.__init__(self, control, variant)
-        self.params = ['mean', 'sigma']
+        self.params = ['mean', 'sigma', 'nu_minus_one']
 
     def set_models(self):
         """Define models for each group.
 
         :return: None
         """
+        def get_nu(group):
+            @deterministic(plot=False)
+            def nu(nu_minus_one=self.stochastics[group + '_nu_minus_one']):
+                return nu_minus_one + 1
+            return nu
+
+        def get_lam(group):
+            @deterministic(plot=False)
+            def lam(sigma=self.stochastics[group + '_sigma']):
+                return 1 / sigma ** 2
+            return lam
+
         for group in ['control', 'variant']:
-            self.stochastics[group] = Normal(
+            self.stochastics[group] = NoncentralT(
                 group,
                 self.stochastics[group + '_mean'],
-                self.stochastics[group + '_sigma'],
+                get_lam(group),
+                get_nu(group),
                 value=getattr(self, group),
                 observed=True)
 
@@ -47,6 +62,7 @@ class GaussianModel(AbstractModel):
         for group in ['control', 'variant']:
             self.stochastics[group + '_mean'] = Normal(group + '_mean', obs_mean, 0.000001 / obs_sigma ** 2)
             self.stochastics[group + '_sigma'] = Uniform(group + '_sigma', obs_sigma / 1000, obs_sigma * 1000)
+            self.stochastics[group + '_nu_minus_one'] = Exponential(group + '_nu_minus_one', 1 / 29)
 
     def draw_distribution(self, group, x, i):
         """Draw the ith sample distribution from the model, and compute its values for each element of x.
@@ -60,7 +76,9 @@ class GaussianModel(AbstractModel):
         """
         m = self.stochastics[group + '_mean'].trace()[i]
         s = self.stochastics[group + '_sigma'].trace()[i]
-        return np.exp([normal_like(xi, m, s) for xi in x])
+        nu = self.stochastics[group + '_nu_minus_one'].trace()[i] + 1
+        lam = 1 / s ** 2
+        return np.exp([noncentral_t_like(xi, m, lam, nu) for xi in x])
 
     def plot_extras(self, n_bins=30):
         """Adding to the parent plot the display of effect size.

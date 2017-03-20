@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from pymc import MCMC
 
-from models.bernoulli_model import BernoulliModel
-from models.exponential_model import ExponentialModel
-from models.gaussian_model import GaussianModel
-from models.lognormal_model import LognormalModel
-from models.poisson_model import PoissonModel
-from models.student_model import StudentModel
+from lib.bernoulli_model import BernoulliModel
+from lib.exponential_model import ExponentialModel
+from lib.gaussian_model import GaussianModel
+from lib.lognormal_model import LognormalModel
+from lib.poisson_model import PoissonModel
+from lib.student_model import StudentModel
 
 models = {
     'bernoulli': BernoulliModel,
@@ -18,7 +18,7 @@ models = {
 }
 
 
-class BayesianTest:
+class BTest:
 
     def __init__(self, control, variant, model='student', verbose=True):
         """Init.
