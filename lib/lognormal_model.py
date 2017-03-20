@@ -2,11 +2,12 @@
 from __future__ import division
 
 import numpy as np
-from models.abstract_model import AbstractModel
 from pymc import Lognormal
 from pymc import Normal
 from pymc import Uniform
 from pymc.distributions import lognormal_like
+
+from lib.abstract_model import AbstractModel
 
 
 class LognormalModel(AbstractModel):
