@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
+from models.bernoulli_model import BernoulliModel
+from models.exponential_model import ExponentialModel
+from models.gaussian_model import GaussianModel
+from models.lognormal_model import LognormalModel
+from models.poisson_model import PoissonModel
+from models.student_model import StudentModel
 from pymc import MCMC
-
-from babtest.models.bernoulli_model import BernoulliModel
-from babtest.models.exponential_model import ExponentialModel
-from babtest.models.gaussian_model import GaussianModel
-from babtest.models.lognormal_model import LognormalModel
-from babtest.models.poisson_model import PoissonModel
-from babtest.models.student_model import StudentModel
 
 models = {
     'bernoulli': BernoulliModel,

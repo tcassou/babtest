@@ -1,6 +1,7 @@
 # Folder patterns
-.venv
-.ipynb_checkpoints
+.venv/
+.ipynb_checkpoints/
+dist/
 
 # File patterns
 *.pyc
