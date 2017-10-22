@@ -3,14 +3,13 @@ from __future__ import division
 
 import matplotlib.pyplot as plt
 import numpy as np
+from models.abstract_model import AbstractModel
 from pymc import deterministic
 from pymc import Exponential
 from pymc import NoncentralT
 from pymc import Normal
 from pymc import Uniform
 from pymc.distributions import noncentral_t_like
-
-from models.abstract_model import AbstractModel
 
 
 class StudentModel(AbstractModel):

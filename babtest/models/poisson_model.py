@@ -2,11 +2,10 @@
 from __future__ import division
 
 import numpy as np
+from models.abstract_model import AbstractModel
 from pymc import Poisson
 from pymc import Uniform
 from pymc.distributions import poisson_like
-
-from models.abstract_model import AbstractModel
 
 
 class PoissonModel(AbstractModel):
