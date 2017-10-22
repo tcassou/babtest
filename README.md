@@ -1,14 +1,14 @@
 # Python Bayesian Tests
 
-[![Build Status](https://travis-ci.org/tcassou/btest.svg?branch=master)](https://travis-ci.org/tcassou/btest)
+[![Build Status](https://travis-ci.org/tcassou/babtest.svg?branch=master)](https://travis-ci.org/tcassou/babtest)
 
 Bayesian Tests are a Bayesian alternative to classical hypothesis testing, you can read more about it [here](https://en.wikipedia.org/wiki/Bayes_factor).
 
 ## Setup
 Preferably use a virtual environment:
 ```
-git clone git@github.com:tcassou/btest
-cd btest
+git clone git@github.com:tcassou/babtest
+cd babtest
 virtualenv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
@@ -34,10 +34,10 @@ array([ 0.0986842, -0.0176   ,  0.0571429, ...,  0.452941 , -0.304348 ,
         0.289474 ])
 ```
 
-You simply need to create a `BTest` object, specifying the data sets and the model you want to use. All available models can be found in `btest.py`.
+You simply need to create a `BABTest` object, specifying the data sets and the model you want to use. All available models can be found in `babtest.py`.
 Here we'll assume the Student's t-distribution is a good description of our metric.
 ```
-bt = BTest(control, variant, model='student')
+bt = BABTest(control, variant, model='student')
 bt.run()
 bt.plot()
 ```
@@ -46,14 +46,14 @@ This will typically produce the following plots:
 
 ### Data and model
 
-![Data vs Model](https://github.com/tcassou/btest/blob/master/example/data_vs_pred.png)
+![Data vs Model](https://github.com/tcassou/babtest/blob/master/example/data_vs_pred.png)
 The metric distribution is shown for both `control` and `variant` sets (red bars), as well as a few plots of distributions estimated in the Monte Carlo sampling (blue lines).
 
 In our example, one can eyeball that the model is a good fit for the data.
 
 ### Posterior knowledge of distribution parameters
 
-![Posterior Parameters](https://github.com/tcassou/btest/blob/master/example/posterior_distrib.png)
+![Posterior Parameters](https://github.com/tcassou/babtest/blob/master/example/posterior_distrib.png)
 For each of the sets (`control`, `variant`), distribution parameters are estimated. This "knowledge" of parameters is described as a likelihood, or in other words denstity of credibility, which is represented in the above graphs.
 In our example, it can be seen that the parameters of the two sets are extremely likely to be different, as their distributions are shifted and
 * barely overlap in case of the mean,
