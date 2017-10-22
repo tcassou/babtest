@@ -5,10 +5,10 @@ from distutils.core import setup
 setup(
     name='babtest',
     packages=['babtest'],
-    version='1.0.0',
+    version='1.0.1',
     description='Python package for Bayesian Tests / AB Testing.',
     url='https://github.com/tcassou/babtest',
-    download_url='https://github.com/tcassou/babtest/archive/1.0.0.tar.gz',
+    download_url='https://github.com/tcassou/babtest/archive/1.0.1.tar.gz',
     keywords=['python', 'bayesian', 'A/B', 'test'],
     license='MIT',
     classifiers=[
