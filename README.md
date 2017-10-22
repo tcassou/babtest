@@ -7,11 +7,9 @@ Bayesian Tests are a Bayesian alternative to classical hypothesis testing, you c
 ## Setup
 Preferably use a virtual environment:
 ```
-git clone git@github.com:tcassou/babtest
-cd babtest
 virtualenv .venv
 . .venv/bin/activate
-pip install -r requirements.txt
+pip install babtest
 ```
 
 ## Distributions currently available
