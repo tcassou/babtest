@@ -9,7 +9,7 @@ from genty import genty_dataset
 from numpy.testing import assert_array_equal
 from numpy.testing import assert_raises
 
-from babtest import BABTest
+from babtest.babtest import BABTest
 
 
 @genty
