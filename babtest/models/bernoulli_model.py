@@ -6,7 +6,7 @@ from pymc import Bernoulli
 from pymc import Uniform
 from pymc.distributions import bernoulli_like
 
-from lib.abstract_model import AbstractModel
+from models.abstract_model import AbstractModel
 
 
 class BernoulliModel(AbstractModel):

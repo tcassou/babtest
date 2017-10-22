@@ -10,7 +10,7 @@ from pymc import Normal
 from pymc import Uniform
 from pymc.distributions import noncentral_t_like
 
-from lib.abstract_model import AbstractModel
+from models.abstract_model import AbstractModel
 
 
 class StudentModel(AbstractModel):
