@@ -3,15 +3,15 @@ from distutils.core import setup
 
 
 setup(
-    name = 'babtest',
-    packages = ['babtest'],
-    version = '1.0.0',
-    description = 'Python package for Bayesian Tests / AB Testing.',
-    url = 'https://github.com/tcassou/babtest',
-    download_url = 'https://github.com/tcassou/babtest/archive/1.0.0.tar.gz',
-    keywords = ['python', 'bayesian', 'A/B', 'test'],
+    name='babtest',
+    packages=['babtest'],
+    version='1.0.0',
+    description='Python package for Bayesian Tests / AB Testing.',
+    url='https://github.com/tcassou/babtest',
+    download_url='https://github.com/tcassou/babtest/archive/1.0.0.tar.gz',
+    keywords=['python', 'bayesian', 'A/B', 'test'],
     license='MIT',
-    classifiers = [
+    classifiers=[
         'Programming Language :: Python',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',

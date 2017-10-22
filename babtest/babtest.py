@@ -18,7 +18,7 @@ models = {
 }
 
 
-class BTest:
+class BABTest:
 
     def __init__(self, control, variant, model='student', verbose=True):
         """Init.

@@ -9,11 +9,11 @@ from genty import genty_dataset
 from numpy.testing import assert_array_equal
 from numpy.testing import assert_raises
 
-from btest import BTest
+from babtest import BABTest
 
 
 @genty
-class BTestTest(unittest.TestCase):
+class BABTestTest(unittest.TestCase):
 
     @genty_dataset(
         (np.random.normal, (0, 1, 55), (0.1, 1.05, 62), 'gaussian'),
@@ -26,7 +26,7 @@ class BTestTest(unittest.TestCase):
     def test_run(self, dist, param1, param2, model):
         y1 = dist(*param1)
         y2 = dist(*param2)
-        bt = BTest(y1, y2, model=model, verbose=False)
+        bt = BABTest(y1, y2, model=model, verbose=False)
         bt.run(n_iter=1100, n_burn=100)
         assert_array_equal(bt.control, y1)
         assert_array_equal(bt.variant, y2)
@@ -40,7 +40,7 @@ class BTestTest(unittest.TestCase):
     def test_unknown_model(self):
         y1 = np.array([0])
         y2 = np.array([1])
-        assert_raises(KeyError, BTest, y1, y2, model='foo')
+        assert_raises(KeyError, BABTest, y1, y2, model='foo')
 
     @genty_dataset(
         (150, 15),
@@ -50,7 +50,7 @@ class BTestTest(unittest.TestCase):
     def test_sampling(self, n_iter, n_burn):
         y1 = np.random.randint(0, 2, 10)
         y2 = np.random.randint(0, 2, 11)
-        bt = BTest(y1, y2, model='bernoulli', verbose=False)
+        bt = BABTest(y1, y2, model='bernoulli', verbose=False)
         bt.run(n_iter=n_iter, n_burn=n_burn)
         assert_array_equal(bt.control, y1)
         assert_array_equal(bt.variant, y2)
