@@ -37,7 +37,7 @@ enable=print-statement
 # --disable=W"
 #disable=
 
-disable=invalid-name,missing-docstring,too-many-lines,C0304,C1001,R,no-name-in-module,no-member,import-error,ungrouped-imports,wrong-import-order,star-args,protected-access,arguments-differ,signature-differs,super-init-not-called,super-on-old-class,no-init,fixme,unused-argument,abstract-method,too-many-function-args,unbalanced-tuple-unpacking
+disable=invalid-name,missing-docstring,too-many-lines,C0304,C1001,R,no-name-in-module,no-member,import-error,ungrouped-imports,wrong-import-order,star-args,protected-access,arguments-differ,signature-differs,super-init-not-called,super-on-old-class,no-init,fixme,unused-argument,abstract-method,too-many-function-args,unbalanced-tuple-unpacking,relative-import
 
 
 [REPORTS]
