@@ -5,10 +5,8 @@
 Bayesian Tests are a Bayesian alternative to classical hypothesis testing, you can read more about it [here](https://en.wikipedia.org/wiki/Bayes_factor).
 
 ## Setup
-Preferably use a virtual environment:
+Simply install from `pip`:
 ```
-virtualenv .venv
-. .venv/bin/activate
 pip install babtest
 ```
 

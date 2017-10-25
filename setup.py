@@ -2,19 +2,19 @@
 from distutils.core import setup
 
 
+version = '1.0.2'
+
 setup(
     name='babtest',
     packages=['babtest'],
-    version='1.0.1',
+    version=version,
     description='Python package for Bayesian Tests / AB Testing.',
     url='https://github.com/tcassou/babtest',
-    download_url='https://github.com/tcassou/babtest/archive/1.0.1.tar.gz',
-    keywords=['python', 'bayesian', 'A/B', 'test'],
-    license='MIT',
+    download_url='https://github.com/tcassou/babtest/archive/{}.tar.gz'.format(version),
+    keywords=['python', 'bayesian', 'AB', 'test'],
     classifiers=[
         'Programming Language :: Python',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
         'Topic :: Scientific/Engineering :: Mathematics',
         'Topic :: Scientific/Engineering :: Visualization',
