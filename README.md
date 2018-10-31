@@ -57,8 +57,18 @@ In our example, it can be seen that the parameters of the two sets are extremely
 
 One could conclude that A and B groups are different here.
 
+## Troubleshooting
+### MacOS
+#### Installing requirements
+In order to install the `pymc` requirement, you'll need a fortran compiler. On MacOS simply install with `brew install gcc`
+#### Matplotlib runtime error
+You may run into this `matplotlib` issue:
+> RuntimeError: Python is not installed as a framework. The Mac OS X backend will not be able to function correctly if Python is not installed as a framework.
+
+Simply create a `~/.matplotlib/matplotlibrc` file with the following option: `backend: TkAgg`, which will change the `matplotlib` backend and solve the issue.
+
 ## Requirements
-* `numpy==1.11.3`
-* `scipy==0.18.1`
-* `pymc==2.3.6`
-* `matplotlib==1.5.3`
+* `numpy>=1.11.3`
+* `scipy>=0.18.1`
+* `pymc>=2.3.6`
+* `matplotlib>=1.5.3`

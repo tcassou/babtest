@@ -1,5 +1,5 @@
 # Folder patterns
-.venv/
+.env*/
 .ipynb_checkpoints/
 dist/
 
