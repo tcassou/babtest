@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
-from models.bernoulli_model import BernoulliModel
-from models.exponential_model import ExponentialModel
-from models.gaussian_model import GaussianModel
-from models.lognormal_model import LognormalModel
-from models.poisson_model import PoissonModel
-from models.student_model import StudentModel
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+from .models.bernoulli_model import BernoulliModel
+from .models.exponential_model import ExponentialModel
+from .models.gaussian_model import GaussianModel
+from .models.lognormal_model import LognormalModel
+from .models.poisson_model import PoissonModel
+from .models.student_model import StudentModel
 from pymc import MCMC
 
 models = {
