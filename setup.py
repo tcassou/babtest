@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 
-version = '1.0.2'
+version = '1.0.3'
 
 setup(
     name='babtest',
@@ -16,15 +16,16 @@ setup(
         'Programming Language :: Python',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering :: Mathematics',
         'Topic :: Scientific/Engineering :: Visualization',
     ],
     install_requires=[
-        'numpy==1.11.3',
-        'scipy==0.18.1',
-        'pymc==2.3.6',
-        'matplotlib==1.5.3',
-        'genty==1.3.2',
-        'nose==1.3.7',
+        'numpy>=1.11.3',
+        'scipy>=0.18.1',
+        'pymc>=2.3.6',
+        'matplotlib>=1.5.3',
+        'genty>=1.3.2',
+        'nose>=1.3.7',
     ],
 )
