@@ -19,7 +19,7 @@ addons:
 
 install:
   - pip -qqq install --upgrade pip setuptools
-  - pip install --user pre-commit
+  - pip install --user pre-commit==1.12.0
   - pip install -r requirements.txt
 
 cache:
