@@ -132,8 +132,8 @@ class AbstractModel(object):
             # Sample of model predictions
             idxs = [int(val) for val in np.round(np.random.uniform(size=n_curves) * self.n_samples)]
             x = np.linspace(bins[0], bins[-1], 100)
-            for i in idxs:
-                ax.plot(x, self.draw_distribution(group, x, i), color=PRETTY_BLUE, zorder=-10)
+            for j in idxs:
+                ax.plot(x, self.draw_distribution(group, x, j), color=PRETTY_BLUE, zorder=-10)
 
             ax.set_xlabel('y')
             ax.set_ylabel('p(y)')
