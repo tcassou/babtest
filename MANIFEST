@@ -3,3 +3,11 @@ setup.cfg
 setup.py
 babtest/__init__.py
 babtest/babtest.py
+babtest/models/__init__.py
+babtest/models/abstract_model.py
+babtest/models/bernoulli_model.py
+babtest/models/exponential_model.py
+babtest/models/gaussian_model.py
+babtest/models/lognormal_model.py
+babtest/models/poisson_model.py
+babtest/models/student_model.py

@@ -2,11 +2,11 @@
 from distutils.core import setup
 
 
-version = '1.0.4'
+version = '1.0.5'
 
 setup(
     name='babtest',
-    packages=['babtest'],
+    packages=['babtest', 'babtest.models'],
     version=version,
     description='Python package for Bayesian Tests / AB Testing.',
     url='https://github.com/tcassou/babtest',
