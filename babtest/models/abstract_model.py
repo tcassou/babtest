@@ -102,11 +102,11 @@ class AbstractModel(object):
             diff = variant_posterior - control_posterior
             # Plot
             _, edges = np.histogram(np.concatenate((control_posterior, variant_posterior)), bins=n_bins)
-            ax1 = f.add_subplot(3, len(self.params), i + 1 + 0 * len(self.params), axisbg='none')
+            ax1 = f.add_subplot(3, len(self.params), i + 1 + 0 * len(self.params), facecolor='none')
             AbstractModel.plot_posterior(control_posterior, bins=edges, ax=ax1, title='Control ' + param, label='')
-            ax2 = f.add_subplot(3, len(self.params), i + 1 + 1 * len(self.params), axisbg='none')
+            ax2 = f.add_subplot(3, len(self.params), i + 1 + 1 * len(self.params), facecolor='none')
             AbstractModel.plot_posterior(variant_posterior, bins=edges, ax=ax2, title='Variant ' + param, label='')
-            ax3 = f.add_subplot(3, len(self.params), i + 1 + 2 * len(self.params), axisbg='none')
+            ax3 = f.add_subplot(3, len(self.params), i + 1 + 2 * len(self.params), facecolor='none')
             AbstractModel.plot_posterior(diff, bins=n_bins, ax=ax3, title='Diff. of ' + param, draw_zero=True, label='')
 
     def plot_data_and_prediction(self, n_bins=30, n_curves=10):
@@ -124,10 +124,10 @@ class AbstractModel(object):
 
         f = plt.figure(figsize=(5 * len(self.params), 5), facecolor='white')
         for i, group in enumerate(['control', 'variant']):
-            ax = f.add_subplot(2, 1, i + 1, axisbg='none')
+            ax = f.add_subplot(2, 1, i + 1, facecolor='none')
             # Observations
             obs = getattr(self, group)
-            ax.hist(obs, bins=bins, rwidth=0.5, facecolor='r', edgecolor='none', normed=True)
+            ax.hist(obs, bins=bins, rwidth=0.5, facecolor='r', edgecolor='none', density=True)
 
             # Sample of model predictions
             idxs = [int(val) for val in np.round(np.random.uniform(size=n_curves) * self.n_samples)]

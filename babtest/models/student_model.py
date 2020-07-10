@@ -94,7 +94,7 @@ class StudentModel(AbstractModel):
         avg_std = np.sqrt(
             (self.stochastics['control_sigma'].trace() ** 2 + self.stochastics['variant_sigma'].trace() ** 2) / 2)
         f = plt.figure(figsize=(5 * len(self.params), 5), facecolor='white')
-        ax = f.add_subplot(1, 1, 1, axisbg='none')
+        ax = f.add_subplot(1, 1, 1, facecolor='none')
         AbstractModel.plot_posterior(
             diff_means / avg_std, bins=n_bins, ax=ax, title='Effect Size',
             draw_zero=True, label=r'$(\mu_1 - \mu_2)/\sqrt{(\sigma_1 + \sigma_2)/2}$')
