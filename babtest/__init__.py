@@ -1,1 +1,1 @@
-from .babtest import BABTest
+from .babtest import babtest    # noqa: F401

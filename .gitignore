@@ -6,3 +6,4 @@ dist/
 # File patterns
 *.pyc
 *.DS_Store
+*.ipynb
