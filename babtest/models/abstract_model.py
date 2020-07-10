@@ -191,7 +191,6 @@ class AbstractModel(object):
 
         :return: None
         """
-        pass
 
     @staticmethod
     def hdi(samples, cred_mass=0.95):

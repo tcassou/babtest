@@ -9,7 +9,7 @@
     -   id: check-added-large-files
     -   id: double-quote-string-fixer
 -   repo: git://github.com/pre-commit/mirrors-pylint
-    sha: v2.1.1
+    sha: v2.5.3
     hooks:
     -   id: pylint
         args:
