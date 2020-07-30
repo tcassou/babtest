@@ -1,13 +1,16 @@
 -   repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v0.7.1
+    rev: v3.1.0
     hooks:
     -   id: trailing-whitespace
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: debug-statements
-    -   id: flake8
     -   id: check-added-large-files
     -   id: double-quote-string-fixer
+    -   id: check-case-conflict
+    -   id: check-docstring-first
+    -   id: name-tests-test
+    -   id: requirements-txt-fixer
 -   repo: git://github.com/pre-commit/mirrors-pylint
     rev: v2.5.3
     hooks:
@@ -21,7 +24,6 @@
     -   id: do_not_commit
     -   id: remove_ipython_notebook_outputs
 -   repo: https://github.com/asottile/reorder_python_imports.git
-    rev: v0.3.1
+    rev: v2.3.4
     hooks:
     -   id: reorder-python-imports
-        language_version: python2.7

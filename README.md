@@ -1,6 +1,6 @@
 # Python Bayesian Tests
 
-[![Build Status](https://travis-ci.org/tcassou/babtest.svg?branch=master)](https://travis-ci.org/tcassou/babtest)
+[![Build](https://github.com/tcassou/babtest/workflows/Test%20and%20Release/badge.svg)](https://github.com/tcassou/babtest/actions)
 
 Bayesian Tests are a Bayesian alternative to classical hypothesis testing, you can read more about it [here](https://en.wikipedia.org/wiki/Bayes_factor).
 
